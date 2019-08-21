@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PMS</title>
+
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script></head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <a class="navbar-brand" href="/">PMS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li>
+              <a class="nav-link" href="/">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/departments">Departments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/employees">Employees</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col shadow p-3 mb-5 bg-white rounded mt-4">
+                <div class="d-flex justify-content-center">
+                    <button data-toggle="modal" data-target="#addEmployee" class="btn btn-md btn-info">Add Employee</button>
+                </div>
+
+                <br>
+
+
+
+
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Full name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone no</th>
+                        <th scope="col">ID no</th>
+                        <th scope="col">PIN</th>
+                        <th scope="col">salary</th>
+                        <th scope="col">Benefits</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+
+                    <!-- add employee modal -->
+                    <div class="modal" id="addEmployee" tabindex="-5" role="dialog">
+                        <div class="modal-dialog modal-md"  role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Employee registration</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- body -->
+                                    <form action="/employees" method="POST">
+                                        <div class="form-group">
+                                            <label for="fullName">Full name</label>
+                                            <input type="text" name="fullName" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="gender">Gender</label>
+                                            <select name="gender" class="form-control form-control-sm" required>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number</label>
+                                            <input type="text" name="phone" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="department">Department</label>
+                                            <select name="department" class="form-control form-control-sm" required>
+
+                                                    <option value="3">Human Resource</option>
+
+                                                    <option value="4">Security</option>
+
+                                                    <option value="2">Information Technology</option>
+
+                                                    <option value="5">Marketing</option>
+
+                                                    <option value="7">Accounts</option>
+
+                                                    <option value="1">Finance</option>
+
+                                                    <option value="8">ICT</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="natId">ID number</label>
+                                            <input type="text" name="natId" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="krapin">KRA pin</label>
+                                            <input type="text" name="krapin" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="basicsalary">Basic salary</label>
+                                            <input type="text" name="basicsalary" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="benefits">Benefits</label>
+                                            <input type="text" name="benefits" class="form-control form-control-sm" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-sm btn-success">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- delete -->
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
