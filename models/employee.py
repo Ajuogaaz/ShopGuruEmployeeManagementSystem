@@ -1,6 +1,6 @@
 from app import db
 
-class EmployeeModel(db.model):
+class EmployeeModel(db.Model):
     __tablename__ = 'employees'
 
     id = db.column(db.Integer, primary_key=True)
@@ -12,4 +12,5 @@ class EmployeeModel(db.model):
     kra_pin = db.Column(db.Integer, nullable=False, unique=True)
     salary = db.Column(db.Float, nullable=False)
     benefits = db.Column(db.Float, nullable=False)
+    department_id = db.Column(db.Integer, db.ForeignKey('department_id'))
 
