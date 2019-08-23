@@ -15,6 +15,7 @@
                 <br>
 
 
+
                 <!-- department modal -->
                 <div class="modal" id="addDepartment" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
@@ -39,6 +40,29 @@
                         </div>
                     </div>
                 </div>
+
+                <table class="table table-hover" class="table table-striped">
+                    <thead class="thead bg-success">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                {#    Jinja cord for looping through the records as I display them   #}
+
+                {% for each in mydepartments %}
+                    <tr>
+                        <td>{{ each.id }}</td>
+                        <td>{{ each.name }}</td>
+
+                    </tr>
+                {% endfor %}
+
+                  </tbody>
+                </table>
+
             </div>
         </div>
     </div>

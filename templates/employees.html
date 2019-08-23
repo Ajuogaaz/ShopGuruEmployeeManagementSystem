@@ -31,22 +31,24 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        {% for each in myemployees %}
                         <tr>
-                            <td>1</td>
-                            <td>Linus Brian Okoth</td>
-                            <td>Male</td>
-                            <td>LinusOkoth2023@u.northwestern.edu</td>
-                            <td>0798156862</td>
-                            <td>35380990</td>
-                            <td>AO23546448ZX</td>
-                            <td>23000</td>
-                            <td>2000</td>
-                            <td>Finance</td>
+                            <td>{{ each.id }}</td>
+                            <td>{{ each.full_name }}</td>
+                            <td>{{ each.gender }}</td>
+                            <td>{{ each.email }}</td>
+                            <td>{{ each.phone_number }}</td>
+                            <td>{{ each.national_id }}</td>
+                            <td>{{ each.krapin }}</td>
+                            <td>{{ each.salary }}</td>
+                            <td>{{ each.benefits }}</td>
+                            <td>{{ each.department_id }}</td>
                             <td><button type="button" class="btn btn-warning">Edit</button></td>
-                            <td><button type="button" class="btn btn-primary">Edit</button></td>
+                            <td><button type="button" class="btn btn-primary">Delete</button></td>
 
                         </tr>
-
+                        {% endfor %}
                     </tbody>
 
                     <!-- add employee modal -->
@@ -62,56 +64,60 @@
                                 <div class="modal-body">
                                     <!-- body -->
 
-                                    <form>
+                                    <form action="/employees" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="fullName">Full Name</label>
-                                                <input type="text" class="form-control" id="fullName" placeholder="Linus Brian Okoth">
+                                                <input name="fullName" type="text" class="form-control" id="fullName" placeholder="Linus Brian Okoth">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="department">Department</label>
-                                                <select id="department" class="form-control">
+                                                <select name="department" id="department" class="form-control">
                                                     <option selected>Choose Department</option>
-                                                    <option>Finance</option>
+
+                                                    {% for each in mydepartments %}
+                                                    <option value="{{ each.id }}">{{ each.name }}</option>
+                                                    {% endfor %}
+
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
                                                 <label for="gender">Gender</label>
-                                                <select id="gender" class="form-control">
+                                                <select name="gender" id="gender" class="form-control">
                                                     <option selected>Choose Gender</option>
                                                     <option>Male</option>
                                                     <option>Female</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-5">
-                                                <label for="emailAdrress">Email</label>
-                                                <input type="email" class="form-control" id="emailAdrress" placeholder="brianlinus1753@gmail.com">
+                                                <label for="email">Email</label>
+                                                <input name="email"  type="email" class="form-control" id="email" placeholder="brianlinus1753@gmail.com">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="phoneNumber">Phone Number</label>
-                                                <input type="number" class="form-control" id="phoneNumber" placeholder="0798156862">
+                                                <input name="phoneNumber" type="number" class="form-control" id="phoneNumber" placeholder="0798156862">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="idNumber">ID No</label>
-                                                <input type="number" class="form-control" id="idNumber" placeholder="35380990">
+                                                <input name="idNumber" type="number" class="form-control" id="idNumber" placeholder="35380990">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="KRApin">KRA Pin</label>
-                                                <input type="text" class="form-control" id="KRApin" placeholder="AW35380990d53JY">
+                                                <input name="KRApin"  type="text" class="form-control" id="KRApin" placeholder="AW35380990d53JY">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="salary">Salary</label>
-                                                <input type="number" class="form-control" id="salary" placeholder="Salary in KSH">
+                                                <input  name="salary"   type="number" class="form-control" id="salary" placeholder="Salary in KSH">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="benefits">Total Benefits</label>
-                                                <input type="number" class="form-control" id="benefits" placeholder="Benefits in KSH">
+                                                <input name="benefits"  type="number" class="form-control" id="benefits" placeholder="Benefits in KSH">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Register</button>
