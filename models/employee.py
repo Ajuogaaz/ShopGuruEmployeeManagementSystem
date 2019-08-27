@@ -33,6 +33,44 @@ class EmployeeModel(db.Model):
 
     @classmethod
     def fetch_by_id(cls, id):
-        """Search the specific id"""
-        return cls.query.filter_by(id=id).first()
-    
+         return cls.query.filter_by(id=id).first()
+
+    @classmethod
+    def update_by_id(cls, id=id, full_name = None,gender = None,kra_pin = None, phone_number = None, email = None,national_id = None,
+                     department_id = None,salary = None,benefits = None):
+
+        record = cls.fetch_by_id(id=id)
+
+        if record:
+            if full_name:
+                record.full_name = full_name
+            if gender:
+                record.gender = gender
+            if kra_pin:
+                record.kra_pin = kra_pin
+            if phone_number:
+                record.phone_number = phone_number
+            if email:
+                record.email = email
+            if national_id:
+                record.national_id = national_id
+            if department_id:
+                record.department_id = department_id
+            if salary:
+                record.salary = salary
+            if record.benefits:
+                record.benefits = benefits
+
+
+            db.session.commit()
+            return True
+
+    @classmethod
+    def deleteEmployee(cls, id):
+        record = cls.query.filter_by(id=id)
+        if record.first():
+            record.delete()
+            db.session.commit()
+            return True
+        else:
+            return False

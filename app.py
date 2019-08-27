@@ -23,7 +23,6 @@ def create_tables():
     db.create_all()
 
 
-
 @app.route('/')
 def home():
     return render_template("index.html")
@@ -86,5 +85,36 @@ def employees():
     return render_template("employees.html", mydepartments=all_records, myemployees=all_employee_records)
 
 
+@app.route('/editEmployee/<int:id>',methods=['POST'])
+def editEmployee(id):
+
+    if request.method == 'POST':
+        employee_name = request.form['fullName']
+        department_name = request.form['department']
+        gender_name = request.form['gender']
+        email_name = request.form['email']
+        phoneNumber_name = request.form['phoneNumber']
+        idNumber_name = request.form['idNumber']
+        KRApin_name = request.form['KRApin']
+        salary_name = request.form['salary']
+        benefits_name = request.form['benefits']
+
+        update = EmployeeModel.update_by_id(full_name=employee_name, gender=gender_name, email=email_name, phone_number=phoneNumber_name,
+                                                national_id=idNumber_name, kra_pin=KRApin_name, salary=salary_name, benefits=benefits_name,
+                                                department_id=department_name)
+        if update:
+            return redirect(url_for('employees'))
+
+@app.route('/deleteEmployee/<int:id>', methods=['POST'])
+def deleteEmployee(id):
+
+        update = EmployeeModel.deleteEmployee(id)
+
+        if update:
+            return redirect(url_for('employees'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
