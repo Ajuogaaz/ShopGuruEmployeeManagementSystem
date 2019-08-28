@@ -10,7 +10,8 @@ from config.configs import Config, DevelopmentConfig,ProductionConfig
 app = Flask(__name__)
 
 #Import Configs
-app.config.from_object(DevelopmentConfig)
+# app.config.from_object(DevelopmentConfig)
+app.config.from_object(ProductionConfig)
 
 #Instatiate SqlAlchemy as db
 db = SQLAlchemy(app)

@@ -1,4 +1,4 @@
-from  app import db
+from  main import db
 
 class DepartmentModel(db.Model):
     __tablename__ = 'departments' #This is the table name
